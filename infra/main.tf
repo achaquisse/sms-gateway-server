@@ -6,14 +6,15 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket         = "exodus-tf-state"
-    encrypt        = true
-    region         = "af-south-1"
-    dynamodb_table = "exodus-tf-state-locking"
-  }
-
   required_version = ">= 1.1.0"
+
+  cloud {
+    organization = "exodus-mz"
+
+    workspaces {
+      name = "sms-gateway-server"
+    }
+  }
 }
 
 provider "aws" {
