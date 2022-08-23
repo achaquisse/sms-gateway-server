@@ -25,11 +25,10 @@ jobs:
           go version
           go get -u golang.org/x/lint/golint
 
-      # Run vet & lint on the code
+      # Run vet on the code
       - name: Run vet & lint
         run: |
           go vet ./...
-          golint ./...
 
       # Run testing on the code
       - name: Run testing
@@ -38,3 +37,10 @@ jobs:
       # Run build of the application
       - name: Run build
         run: make all
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: lambdas
+          path: .out
+          retention-days: 5

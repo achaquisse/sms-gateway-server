@@ -1,10 +1,10 @@
 name: "Terraform"
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_run:
+    workflows: ["Go-build"]
+    types:
+      - completed
 
 jobs:
   terraform:
@@ -13,6 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: lambdas
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
