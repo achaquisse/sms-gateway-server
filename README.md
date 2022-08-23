@@ -1,11 +1,14 @@
-sms-gateway-server
+SMS Gateway [Server]
 =====
+Use your android phone as an SMS gateway
 
 # Why?
 
-It is needed to use a mobile phone as an SMS gateway.
+There is a need to use a mobile phone as an SMS gateway.
 
-# How
+Nexmo, Twilio are expensive, for small projects and experiments.
+
+# How?
 
 Server applications will call an HTTP Endpoint requesting a message to be sent, and then an android mobile application
 will be pooling an HTTP Endpoint querying messages at the pending state, and schedule them to be sent.
