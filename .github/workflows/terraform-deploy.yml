@@ -20,6 +20,12 @@ jobs:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           workflow_conclusion: success
 
+      - name: List downloaded artifacts
+        run: ls -la
+
+      - name: List artifacts folfer
+        run: cd .out && ls -la
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
