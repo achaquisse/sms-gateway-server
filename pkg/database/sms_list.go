@@ -33,7 +33,7 @@ func SmsListPending(client DBQueryAPI, tableName string) (*[]Sms, error) {
 		return nil, errUnmarshal
 	}
 
-	log.Debug().Msgf("Found sms: %s", len(smsList))
+	log.Debug().Msgf("Found sms: %d", len(smsList))
 
 	return &smsList, nil
 }
