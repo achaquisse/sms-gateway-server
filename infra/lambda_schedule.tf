@@ -4,8 +4,6 @@ resource "aws_lambda_function" "lambda_schedule" {
   role          = aws_iam_role.lambda_exec_iam_role.arn
   handler       = "schedule"
 
-  source_code_hash = filebase64sha256(var.zip_lambda.list_pending)
-
   runtime     = "go1.x"
   memory_size = 128
   timeout     = 10
