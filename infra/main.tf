@@ -12,7 +12,7 @@ terraform {
     organization = "exodus-mz"
 
     workspaces {
-      name = "sms-gateway-server"
+      name = "sms-gateway-srv"
     }
   }
 }
