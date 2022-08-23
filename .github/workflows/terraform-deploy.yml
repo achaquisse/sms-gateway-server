@@ -19,6 +19,8 @@ jobs:
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           workflow_conclusion: success
+
+      - name: List downloaded artifacts
         run: ls -la
 
       - name: Setup Terraform
