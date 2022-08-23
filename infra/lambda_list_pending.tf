@@ -7,6 +7,7 @@ resource "aws_lambda_function" "lambda_list_pending" {
   runtime     = "go1.x"
   memory_size = 128
   timeout     = 10
+  architectures = ["arm64"]
 
   environment {
     variables = {
