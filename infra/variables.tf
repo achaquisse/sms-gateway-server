@@ -1,5 +1,5 @@
 variable "environment" {
-  default = "dev"
+  default = "prd"
 }
 
 variable "zip_lambda" {
