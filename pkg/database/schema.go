@@ -1,14 +1,15 @@
 package database
 
 const (
-	SmsStatusPending = "PENDING"
+	SmsStatusPending = "Pending"
+	SmsStatusSuccess = "Success"
+	SmsStatusFailed  = "Failed"
 )
 
 type Sms struct {
-	Pk       string `dynamodbav:"pk" json:"pk"` // Audience
+	Pk       string `dynamodbav:"pk" json:"pk"` // Status
 	Sk       string `dynamodbav:"sk" json:"sk"` // Unique message identifier
 	To       int    `dynamodbav:"to" json:"to"`
 	Message  string `dynamodbav:"message" json:"message"`
-	Status   string `dynamodbav:"status" json:"status"` // PENDING, SENT, FAILED
 	StatusAt int64  `dynamodbav:"status_at" json:"status_at"`
 }
