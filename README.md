@@ -2,7 +2,6 @@ SMS Gateway [Server]
 =====
 Use your android phone as an SMS gateway
 
-
 # Why?
 
 There is a need to use a mobile phone as an SMS gateway.
