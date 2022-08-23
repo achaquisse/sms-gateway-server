@@ -40,9 +40,12 @@ func SmsCreate(client DBPutItemAPI, tableName string, request SmsCreateRequest) 
 		return errMarshal
 	}
 
+	var condition = "attribute_not_exists(sk)"
+
 	out, errPut := client.PutItem(context.TODO(), &dynamodb.PutItemInput{
-		Item:      item,
-		TableName: &tableName,
+		Item:                item,
+		TableName:           &tableName,
+		ConditionExpression: &condition, // Enforces unique 'sk'
 	})
 	if errPut != nil {
 		log.Error().Msgf("Failed to put item. request: %v, cause: %s", request, errPut.Error())
