@@ -3,10 +3,10 @@ variable "environment" {
 }
 
 variable "zip_lambda" {
-  type = map(string)
+  type    = map(string)
   default = {
-    list_pending = "../.out/list_pending.zip"
-    schedule = "../.out/schedule.zip"
+    list_pending  = "../.out/list_pending.zip"
+    schedule      = "../.out/schedule.zip"
     update_status = "../.out/update_status.zip"
   }
 }

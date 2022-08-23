@@ -18,6 +18,6 @@ resource "aws_lambda_function" "lambda_update_status" {
 }
 
 resource "aws_cloudwatch_log_group" "log_update_status" {
-  name = "/aws/lambda/${aws_lambda_function.lambda_update_status.function_name}"
+  name              = "/aws/lambda/${aws_lambda_function.lambda_update_status.function_name}"
   retention_in_days = 14
 }
