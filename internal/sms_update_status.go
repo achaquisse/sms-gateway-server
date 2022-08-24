@@ -21,6 +21,8 @@ func SmsUpdateStatus(request events.APIGatewayProxyRequest) (events.APIGatewayPr
 		return helper.ApiGwError(http.StatusBadRequest, errorMessage)
 	}
 
+	smsUpdateRequest.Sk = request.PathParameters["id"]
+
 	errDb := database.SmsUpdate(dbClient, tableName, smsUpdateRequest)
 
 	if errDb != nil {

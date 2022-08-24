@@ -12,7 +12,7 @@ import (
 )
 
 type SmsUpdateRequest struct {
-	Sk     string
+	Sk     string `json:"sk,omitempty"`
 	Status string
 }
 
