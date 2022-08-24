@@ -37,17 +37,17 @@ func SmsUpdate(client DBGetAndWriteAPI, tableName string, request SmsUpdateReque
 	out, errTransaction := client.TransactWriteItems(context.Background(), &dynamodb.TransactWriteItemsInput{
 		TransactItems: []types.TransactWriteItem{
 			{
+				Put: &types.Put{
+					Item:      smsNewMarshaled,
+					TableName: &tableName,
+				},
+			},
+			{
 				Delete: &types.Delete{
 					Key: map[string]types.AttributeValue{
 						"pk": &types.AttributeValueMemberS{Value: SmsStatusPending},
 						"sk": &types.AttributeValueMemberS{Value: request.Sk},
 					},
-					TableName: &tableName,
-				},
-			},
-			{
-				Put: &types.Put{
-					Item:      smsNewMarshaled,
 					TableName: &tableName,
 				},
 			},

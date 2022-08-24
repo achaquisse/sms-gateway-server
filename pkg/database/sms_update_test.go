@@ -51,7 +51,7 @@ func TestUpdateError(t *testing.T) {
 		t.Fatal("should return an error")
 	}
 
-	expectedErr := "'status' should be Success or Pending"
+	expectedErr := "'status' should be Success or Failed"
 
 	if err.Error() != expectedErr {
 		t.Fatalf("error message different from expected. Got %s, expected: %s", err.Error(), expectedErr)
