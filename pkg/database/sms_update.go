@@ -27,8 +27,8 @@ func SmsUpdate(client DBGetAndWriteAPI, tableName string, request SmsUpdateReque
 	if request.Status == SmsStatusSuccess {
 		sms.Pk = SmsStatusSuccess
 	}
-	if request.Status == SmsStatusPending {
-		sms.Pk = SmsStatusPending
+	if request.Status == SmsStatusFailed {
+		sms.Pk = SmsStatusFailed
 	}
 	sms.StatusAt = time.Now().Unix()
 
@@ -69,7 +69,7 @@ func readSms(client DBGetAndWriteAPI, tableName string, request SmsUpdateRequest
 	}
 
 	if request.Status != SmsStatusSuccess && request.Status != SmsStatusFailed {
-		return Sms{}, errors.New(fmt.Sprintf("'status' should be %s or %s", SmsStatusSuccess, SmsStatusPending))
+		return Sms{}, errors.New(fmt.Sprintf("'status' should be %s or %s", SmsStatusSuccess, SmsStatusFailed))
 	}
 
 	item, errGet := client.GetItem(context.Background(), &dynamodb.GetItemInput{
