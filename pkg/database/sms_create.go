@@ -31,7 +31,7 @@ func SmsCreate(client DBPutItemAPI, tableName string, request SmsCreateRequest) 
 		Sk:       request.Sk,
 		To:       request.To,
 		Message:  request.Message,
-		StatusAt: time.Now().UnixMilli(),
+		StatusAt: time.Now().Unix(),
 	}
 
 	item, errMarshal := attributevalue.MarshalMap(unmarshalledSms)

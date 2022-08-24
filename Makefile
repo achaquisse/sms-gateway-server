@@ -17,9 +17,6 @@ build_update_status:
 	env GOOS=linux GOARCH=amd64 go build -o .out/update_status cmd/updatestatus/main.go
 	cd .out && zip update_status.zip update_status && rm update_status
 
-tf_apply:
-	terraform -chdir=.iac apply -auto-approve
-
 clean:
 	@echo "Cleaning up..."
 	rm -rf .out

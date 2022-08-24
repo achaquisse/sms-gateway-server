@@ -11,9 +11,9 @@ import (
 )
 
 func SmsSchedule(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	var smsRequest database.SmsCreateRequest
+	var smsCreateRequest database.SmsCreateRequest
 
-	errMarshal := json.Unmarshal([]byte(request.Body), &smsRequest)
+	errMarshal := json.Unmarshal([]byte(request.Body), &smsCreateRequest)
 
 	if errMarshal != nil {
 		errorMessage := fmt.Sprintf("Unable to unmarshall request body. cause: %s", errMarshal.Error())
@@ -21,7 +21,7 @@ func SmsSchedule(request events.APIGatewayProxyRequest) (events.APIGatewayProxyR
 		return helper.ApiGwError(http.StatusBadRequest, errorMessage)
 	}
 
-	errDb := database.SmsCreate(dbClient, tableName, smsRequest)
+	errDb := database.SmsCreate(dbClient, tableName, smsCreateRequest)
 
 	if errDb != nil {
 		errorMessage := fmt.Sprintf("Unable persist sms. cause: %s", errDb.Error())
