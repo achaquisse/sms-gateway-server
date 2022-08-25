@@ -8,7 +8,7 @@ on:
 
 jobs:
   terraform-dev:
-    name: "Terraform"
+    name: "Terraform-Dev"
     runs-on: ubuntu-latest
     env:
       ## Environment variables
@@ -63,7 +63,7 @@ jobs:
         run: terraform -chdir=infra apply -auto-approve -input=false
 
   terraform-prd:
-    name: "Terraform"
+    name: "Terraform-Prd"
     runs-on: ubuntu-latest
     env:
       ## Environment variables
